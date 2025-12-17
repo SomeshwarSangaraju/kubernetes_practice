@@ -8,7 +8,7 @@ metadata:
     purpose: errors-test
 spec:
   containers:
-  - name: nginx
-    image: nginxddddddd
-  # - name: almalinux
-  #   image: almalinux:9
+  # - name: nginx
+  #   image: nginx
+  - name: almalinux
+    image: almalinux:9
