@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: database
+spec:
+  type: ClusterIp
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: mongodb
+      tier: database
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: mongodb
+        tier: database
+    spec:
+      containers:
+      - name: mongodb
+        image: someshwarsangaraju/mongodb
+        imagePullPolicy: Always 
+        resources:
+          requests:
+            memory: "200mi"
+            cpu: "100m"
+          limits:
+            memory: "400"
+            cpu: "200m"
+        readinessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 27017
+          initialDelaySeconds: 10
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: mongodb
+    tier: database
+  ports:
+  - protocol: "TCP"
+    port: 27017
+    targetPort: 27017
