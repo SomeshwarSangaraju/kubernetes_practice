@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: loadbalancer-demo
+spec:
+  type: LoadBalancer
+  selector:
+    project: roboshop
+    environment: dev
+    purpose: loadBalancer
+  ports:
+  - protocol: "TCP"
+    port: "80"
+    targetPort: "8080"
+    nodePort: "30008"

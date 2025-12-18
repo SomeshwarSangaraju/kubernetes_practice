@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-services
+  labels:
+    project: roboshop
+    environment: dev
+    purpose: services
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    resources:
+      requests:
+        memory: "100mi"
+        cpu : "200m"
+      limits:
+        memory: 200mi
+        cpu: "400m"
+    
