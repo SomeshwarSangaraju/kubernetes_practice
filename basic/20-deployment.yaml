@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Deployment-demo
+  labels:
+    project: roboshop
+    environment: dev
+    purpose: deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      project: roboshop
+      environment: dev
+      purpose: deployment
+  template:
+    metadata:
+      labels:
+      project: roboshop
+      environment: dev
+      purpose: deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          requests:
+            memory: "100mi"
+            cpu: "100m"
+          limits: 
+            memory: "200mi"
+            cpu: "200m"
+        
