@@ -8,7 +8,6 @@ metadata:
     component: mongodb
     tier: database
 spec:
-  type: ClusterIp
   replicas: 1
   selector:
     matchLabels:
