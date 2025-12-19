@@ -17,9 +17,9 @@ spec:
     metadata:
       name: Deployment-demo
       labels:
-      project: roboshop
-      environment: dev
-      purpose: deployment
+        project: roboshop
+        environment: dev
+        purpose: deployment
     spec:
       containers:
       - name: nginx
