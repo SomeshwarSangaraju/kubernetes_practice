@@ -12,12 +12,12 @@ spec:
   - name: debug
     image: someshwarsangaraju/debug:v1
     imagePullPolicy: Always
-    resources:
-      requests:
-        cpu: "100m"
-        memory: "200mi"
-      limits:
-        cpu: "200m"
-        memory: "400mi"
+    # resources:
+    #   requests:
+    #     cpu: "100m"
+    #     memory: "200mi"
+    #   limits:
+    #     cpu: "200m"
+    #     memory: "400mi"
     
 

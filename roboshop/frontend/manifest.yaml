@@ -114,13 +114,13 @@ spec:
             path: /
           failureThreshold: 1
           periodSeconds: 10
-        resources:
-          requests:
-            cpu: "1200m"
-            memory: "1200mi"
-          limits:
-            cpu: "1300m"
-            memory: "1400mi"
+        # resources:
+        #   requests:
+        #     cpu: "1200m"
+        #     memory: "1200mi"
+        #   limits:
+        #     cpu: "1300m"
+        #     memory: "1400mi"
         envFrom:
         - configMapRef:
             name: frontend

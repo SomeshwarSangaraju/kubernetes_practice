@@ -41,13 +41,13 @@ spec:
             path: /health
           failureThreshold: 1
           periodSeconds: 20
-        resources:
-          request:
-            memory: "1100mi"
-            cpu: "1000m"
-          limits:
-            memory: "1200mi"
-            cpu: "1000mi"
+        # resources:
+        #   request:
+        #     memory: "1100mi"
+        #     cpu: "1000m"
+        #   limits:
+        #     memory: "1200mi"
+        #     cpu: "1000mi"
 ---
 apiVersion: v1
 kind: Service

@@ -51,13 +51,13 @@ spec:
             path: /health
           failureThreshold: 1
           periodSeconds: 10
-        resources:
-          requests:
-            memory: "1200mi"
-            cpu: "500m"
-          limits:
-            memory: "1400mi"
-            cpu: "1000m"
+        # resources:
+        #   requests:
+        #     memory: "1200mi"
+        #     cpu: "500m"
+        #   limits:
+        #     memory: "1400mi"
+        #     cpu: "1000m"
         envFrom:
         - configMapRef:
             name: cart
