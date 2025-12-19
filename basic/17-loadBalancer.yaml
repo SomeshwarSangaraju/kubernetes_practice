@@ -9,7 +9,7 @@ spec:
     environment: dev
     purpose: loadBalancer
   ports:
-  - protocol: "TCP"
-    port: "80"
-    targetPort: "8080"
-    nodePort: "30008"
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
+    nodePort: 30008
