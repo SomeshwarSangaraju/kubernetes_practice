@@ -34,8 +34,8 @@ data:
         include /etc/nginx/conf.d/*.conf;
 
         server {
-            listen       80;
-            listen       [::]:80;
+            listen       8080;
+            listen       [::]:8080;
             server_name  _;
             root         /usr/share/nginx/html;
 
@@ -124,6 +124,14 @@ spec:
         envFrom:
         - configMapRef:
             name: frontend
+        volumeMounts:
+        - name: nginx-config
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: nginx-config
+        configMap:
+          name: frontend
 ---
 apiVersion: v1
 kind: Service
@@ -131,6 +139,7 @@ metadata:
   name: frontend
   namespace: roboshop
 spec:
+  type: LoadBalancer
   selector:
     project: roboshop
     env: dev
@@ -138,6 +147,6 @@ spec:
     component: frontend
   ports:
   - protocol: "TCP"
-    port: "8080"
+    port: "80"
     targetPort: "8080"
 
