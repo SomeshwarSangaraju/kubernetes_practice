@@ -12,11 +12,11 @@ spec:
     image: nginx
     resources:
       requests:
-        memory: "100mi"
-        cpu: "250m"
+        memory: "400mi"
+        cpu: "400m"
       limits:
-        memory: "200mi"
-        cpu: "500m"
+        memory: "500mi"
+        cpu: "600m"
     env:
     - name: "nginx"
       value: "image"
