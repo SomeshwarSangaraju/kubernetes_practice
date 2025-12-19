@@ -23,11 +23,11 @@ spec:
       containers:
       - name: nginx
         image: nginx
-        resources:
-          requests:
-            memory: "500mi"
-            cpu: "500m"
-          limits: 
-            memory: "600mi"
-            cpu: "600m"
+        # resources:
+        #   requests:
+        #     memory: "500mi"
+        #     cpu: "500m"
+        #   limits: 
+        #     memory: "600mi"
+        #     cpu: "600m"
         
