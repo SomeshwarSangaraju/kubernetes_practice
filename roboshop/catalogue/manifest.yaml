@@ -15,7 +15,7 @@ metadata:
   labels:
     project: roboshop
     env: dev
-    tier: database
+    tier: backend
     component: catalogue
 spec:
   replicas: 1
@@ -23,14 +23,14 @@ spec:
     matchLabels:
       project: roboshop
       env: dev
-      tier: database
+      tier: backend
       component: catalogue
   template:
     metadata:
       labels:
         project: roboshop
         env: dev
-        tier: database
+        tier: backend
         component: catalogue
     spec:
       containers:
@@ -72,11 +72,11 @@ spec:
   selector:
     project: roboshop
     env: dev
-    tier: database
+    tier: backend
     component: catalogue
   ports:
   - protocol: "TCP"
-    port: "80"
-    targetPort: "80"
+    port: "8080"
+    targetPort: "8080"
 
       
