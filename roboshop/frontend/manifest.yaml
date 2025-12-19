@@ -146,7 +146,7 @@ spec:
     tier: frontend
     component: frontend
   ports:
-  - protocol: "TCP"
-    port: "80"
-    targetPort: "8080"
+  - protocol: TCP
+    port: 80
+    targetPort: 8080
 
