@@ -59,11 +59,11 @@ spec:
           periodSeconds: 10
         resources:
           requests:
-            cpu: "200m"
-            memory: "200mi"
+            cpu: "1200m"
+            memory: "1200mi"
           limits:
-            cpu: "300m"
-            memory: "400mi"
+            cpu: "1300m"
+            memory: "1400mi"
         envFrom:
         - configMapRef:
             name: payment

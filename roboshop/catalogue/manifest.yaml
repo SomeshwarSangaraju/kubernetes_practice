@@ -39,11 +39,11 @@ spec:
         imagePullPolicy: Always
       resources:
         requests:
-          memory: "200mi"
-          cpu: "100mi"
+          memory: "1200mi"
+          cpu: "500m"
         limits:
-          memory: "400mi"
-          cpu: "200mi"
+          memory: "1400mi"
+          cpu: "1000m"
       ports:
       - name: liveness-port
         containerPort: 8080

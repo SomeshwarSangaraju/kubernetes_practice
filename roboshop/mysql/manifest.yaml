@@ -51,11 +51,11 @@ spec:
         #   periodSeconds: 20
         resources:
           requests:
-            cpu: "200m"
-            memory: "200mi"
+            cpu: "1200m"
+            memory: "1200mi"
           limits:
-            cpu: "400m"
-            memory: "400mi"
+            cpu: "1400m"
+            memory: "1400mi"
         volumeMounts:
         - name: mysql-config
           mountPath: /etc/mysql/conf.d/my.cnf

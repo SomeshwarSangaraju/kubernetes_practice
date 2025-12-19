@@ -53,11 +53,11 @@ spec:
           periodSeconds: 10
         resources:
           requests:
-            cpu: "200m"
-            memory: "200mi"
+            memory: "1200mi"
+            cpu: "500m"
           limits:
-            cpu: "300m"
-            memory: "400mi"
+            memory: "1400mi"
+            cpu: "1000m"
         envFrom:
         - configMapRef:
             name: cart
