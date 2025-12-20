@@ -29,7 +29,6 @@ spec:
       component: shipping
   template:
     metadata:
-      name: shipping
       labels:
         project: roboshop
         env: dev
