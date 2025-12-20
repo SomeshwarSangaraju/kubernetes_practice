@@ -39,6 +39,9 @@ spec:
       - name: shipping
         image: someshwarsangaraju/shipping:v1
         imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: shipping
         ports:
         - name: liveness-port
           containerPort: 8080
@@ -61,9 +64,7 @@ spec:
         #   limits:
         #     cpu: "1000m"
         #     memory: "1400mi"
-        envFrom:
-        - configMapRef:
-            name: shipping
+        
 ---
 apiVersion: v1
 kind: Service
