@@ -28,7 +28,6 @@ spec:
       component: mysql
   template:
     metadata:
-      name: mysql
       labels:
         project: roboshop
         env: dev
@@ -60,6 +59,7 @@ spec:
         - name: mysql-config
           mountPath: /etc/mysql/conf.d/my.cnf
           subPath: my.cnf
+          
       volumes:
         - name: mysql-config
           configMap:
