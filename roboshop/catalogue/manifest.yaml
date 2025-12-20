@@ -1,3 +1,104 @@
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: catalogue
+#   namespace: roboshop
+# data:
+#   MONGO: "true"
+#   MONGO_URL: "mongodb://mongodb:27017/catalogue"
+# ---
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: catalogue
+#   namespace: roboshop
+#   labels:
+#     project: roboshop
+#     env: dev
+#     tier: backend
+#     component: catalogue
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       project: roboshop
+#       env: dev
+#       tier: backend
+#       component: catalogue
+#   template:
+#     metadata:
+#       labels:
+#         project: roboshop
+#         env: dev
+#         tier: backend
+#         component: catalogue
+#     spec:
+#       containers:
+#       - name: catalogue
+#         image: someshwarsangaraju/catalogue:v1
+#         imagePullPolicy: Always
+#         envFrom:
+#         - configMapRef:
+#             name: catalogue
+#       # resources:
+#       #   requests:
+#       #     memory: "1200mi"
+#       #     cpu: "500m"
+#       #   limits:
+#       #     memory: "1400mi"
+#       #     cpu: "1000m"
+#       # ports:
+#       # - name: liveness-port
+#       #   containerPort: 8080
+#       # readinessProbe:
+#       #   httpGet:
+#       #     path: /health
+#       #     port: liveness-port
+#       #   failureThreshold: 1
+#       #   periodSeconds: 15
+#       # livenessProbe:
+#       #   httpGet:
+#       #     path: /health
+#       #     port: liveness-port
+#       #   failureThreshold: 1
+#       #   periodSeconds: 15
+      
+#       ports:
+#       - name: liveness-port
+#         containerPort: 8080
+#       readinessProbe:
+#         httpGet:
+#           path: /health
+#           port: liveness-port
+#         failureThreshold: 1
+#         periodSeconds: 15
+#       livenessProbe:
+#         httpGet:
+#           path: /health
+#           port: liveness-port
+#         failureThreshold: 1
+#         periodSeconds: 15
+      
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: catalogue
+#   namespace: roboshop
+# spec:
+#   selector:
+#     project: roboshop
+#     env: dev
+#     tier: backend
+#     component: catalogue
+#   ports:
+#   - protocol: TCP
+#     port: 8080
+#     targetPort: 8080
+
+
+
+
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -12,73 +113,49 @@ kind: Deployment
 metadata:
   name: catalogue
   namespace: roboshop
+  # these are replica set labels
   labels:
     project: roboshop
-    env: dev
-    tier: backend
     component: catalogue
+    tier: backend
 spec:
   replicas: 1
   selector:
+    # these labels are used to select pods
     matchLabels:
       project: roboshop
-      env: dev
-      tier: backend
       component: catalogue
+      tier: backend
+  # pod definition
   template:
     metadata:
       labels:
         project: roboshop
-        env: dev
-        tier: backend
         component: catalogue
+        tier: backend
     spec:
       containers:
       - name: catalogue
-        image: someshwarsangaraju/catalogue:v1
+        image: joindevops/catalogue:v1
         imagePullPolicy: Always
         envFrom:
         - configMapRef:
             name: catalogue
-      # resources:
-      #   requests:
-      #     memory: "1200mi"
-      #     cpu: "500m"
-      #   limits:
-      #     memory: "1400mi"
-      #     cpu: "1000m"
-      # ports:
-      # - name: liveness-port
-      #   containerPort: 8080
-      # readinessProbe:
-      #   httpGet:
-      #     path: /health
-      #     port: liveness-port
-      #   failureThreshold: 1
-      #   periodSeconds: 15
-      # livenessProbe:
-      #   httpGet:
-      #     path: /health
-      #     port: liveness-port
-      #   failureThreshold: 1
-      #   periodSeconds: 15
-      
-      ports:
-      - name: liveness-port
-        containerPort: 8080
-      readinessProbe:
-        httpGet:
-          path: /health
-          port: liveness-port
-        failureThreshold: 1
-        periodSeconds: 15
-      livenessProbe:
-        httpGet:
-          path: /health
-          port: liveness-port
-        failureThreshold: 1
-        periodSeconds: 15
-      
+        ports:
+        - name: liveness-port
+          containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          failureThreshold: 1
+          periodSeconds: 15
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: liveness-port
+          failureThreshold: 1
+          periodSeconds: 15
 ---
 apiVersion: v1
 kind: Service
@@ -88,12 +165,9 @@ metadata:
 spec:
   selector:
     project: roboshop
-    env: dev
-    tier: backend
     component: catalogue
+    tier: backend
   ports:
-  - protocol: TCP
-    port: 8080
-    targetPort: 8080
-
-      
+    - protocol: TCP
+      port: 8080 # service port
+      targetPort: 8080 # container port
