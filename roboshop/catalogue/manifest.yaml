@@ -37,6 +37,9 @@ spec:
       - name: catalogue
         image: someshwarsangaraju/catalogue:v1
         imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: catalogue
       # resources:
       #   requests:
       #     memory: "1200mi"
@@ -75,9 +78,7 @@ spec:
           port: liveness-port
         failureThreshold: 1
         periodSeconds: 15
-      envFrom:
-      - configMapRef:
-          name: catalogue
+      
 ---
 apiVersion: v1
 kind: Service
