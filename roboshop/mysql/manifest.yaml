@@ -38,7 +38,7 @@ spec:
       containers:
       - name: mysql
         image: someshwarsangaraju/mysql:v1
-        imagePullPolicy: ALways
+        imagePullPolicy: Always
         # readinessProbe:
         #   tcpSocket: 
         #     port: 3306
