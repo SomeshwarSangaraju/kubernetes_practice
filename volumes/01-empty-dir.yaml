@@ -21,4 +21,4 @@ spec:
   volumes:
   - name: emptydir-volume
     emptyDir:
-      sizeLimit: 100mi
+      sizeLimit: 500mi
