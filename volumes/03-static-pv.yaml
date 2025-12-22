@@ -5,7 +5,7 @@ metadata:
 spec:
   accessModes:
   - ReadWriteOnce
-  persistentVolumeReclaimPolicy: delete # retain means don't delete data, Recycle means delete data don't delete disk. Delete means delete the disk
+  persistentVolumeReclaimPolicy: Delete # retain means don't delete data, Recycle means delete data don't delete disk. Delete means delete the disk
   capacity:
     storage: 15Gi
   csi:
@@ -46,7 +46,7 @@ spec:
   - name: nginx-html
     persistentVolumeClaim:
       claimName: ebs-static
-      
+
 ---
 apiVersion: v1
 kind: Service
